@@ -40,3 +40,9 @@ Add a nodemon.json config.
   }
 }
 ```
+
+## Adding Api
+
+```sh
+pnpm add express @types/express
+```
