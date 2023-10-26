@@ -26,4 +26,11 @@ const getContacts = async (req: Request, res: Response, next: NextFunction) => {
   });
 };
 
-export default { getContacts };
+const getContact = async (req: Request, res: Response, next: NextFunction) => {
+  let id: number = parseInt(req.params.id) - 1;
+  return res.status(200).json({
+    data: contacts[id],
+  });
+};
+
+export default { getContacts, getContact };
