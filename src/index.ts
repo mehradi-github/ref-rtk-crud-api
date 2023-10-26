@@ -3,6 +3,7 @@ import express, { Express } from "express";
 import routes from "./routes/contact";
 
 const router: Express = express();
+router.use(express.json());
 router.use("/", routes);
 
 const httpServer = http.createServer(router);

@@ -6,18 +6,18 @@ interface Contact {
   email: string;
   contact: string;
 }
-const contacts: Contact[] = [
+let contacts: Contact[] = [
   {
-    id: 1,
+    id: 0,
     name: "Alex",
     email: "alex@text.com",
-    contact: "contact 1",
+    contact: "contact 0",
   },
   {
-    id: 2,
+    id: 1,
     name: "jone",
     email: "jone@text.com",
-    contact: "contact 2",
+    contact: "contact 1",
   },
 ];
 const getContacts = async (req: Request, res: Response, next: NextFunction) => {
@@ -27,10 +27,65 @@ const getContacts = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const getContact = async (req: Request, res: Response, next: NextFunction) => {
-  let id: number = parseInt(req.params.id) - 1;
+  let id: number = parseInt(req.params.id);
   return res.status(200).json({
-    data: contacts[id],
+    data: contacts.filter((item) => item.id === id),
   });
 };
 
-export default { getContacts, getContact };
+const updateContact = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let id: number = parseInt(req.params.id);
+  let name: string = req.body.name;
+  let email: string = req.body.email;
+  let contact: string = req.body.contact;
+  contacts[id] = {
+    id,
+    name,
+    email,
+    contact,
+  };
+  return res.status(200).json({
+    data: contacts,
+  });
+};
+const deleteContact = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let id: number = parseInt(req.params.id);
+  contacts = contacts.filter((item) => item.id !== id);
+  return res.status(200).json({
+    data: contacts,
+  });
+};
+const addContact = async (req: Request, res: Response, next: NextFunction) => {
+  let id: number = contacts.length;
+
+  let name: string = req.body.name;
+  let email: string = req.body.email;
+  let contact: string = req.body.contact;
+
+  contacts.push({
+    id,
+    name,
+    email,
+    contact,
+  });
+
+  return res.status(200).json({
+    data: contacts,
+  });
+};
+
+export default {
+  getContacts,
+  getContact,
+  updateContact,
+  deleteContact,
+  addContact,
+};
