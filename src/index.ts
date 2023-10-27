@@ -6,7 +6,6 @@ const router: Express = express();
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
-router.use("/", routes);
 
 router.use((req, res, next) => {
   // set the CORS policy
@@ -24,6 +23,7 @@ router.use((req, res, next) => {
   next();
 });
 
+router.use("/", routes);
 const httpServer = http.createServer(router);
 
 httpServer.listen(5000, () => {
