@@ -1,10 +1,10 @@
 # Run: Ctrl + Alt + R
-GET http://localhost:5000/contacts HTTP/1.1
+GET http://localhost:5002/contacts HTTP/1.1
 ###
-GET http://localhost:5000/contacts/1 HTTP/1.1
+GET http://localhost:5002/contacts/1 HTTP/1.1
 
 ###
-POST http://localhost:5000/contacts HTTP/1.1
+POST http://localhost:5002/contacts HTTP/1.1
 content-type: application/json
 
 {
@@ -13,7 +13,7 @@ content-type: application/json
     "contact": "contact sara"
 }
 ###
-PUT http://localhost:5000/contacts/2 HTTP/1.1
+PUT http://localhost:5002/contacts/2 HTTP/1.1
 content-type: application/json
 
 {
@@ -22,6 +22,6 @@ content-type: application/json
     "contact": "contact sara2"
 }
 ###
-DELETE  http://localhost:5000/contacts/2 HTTP/1.1
+DELETE  http://localhost:5002/contacts/2 HTTP/1.1
 
 
