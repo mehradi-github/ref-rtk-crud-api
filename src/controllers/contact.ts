@@ -29,7 +29,7 @@ const getContacts = async (req: Request, res: Response, next: NextFunction) => {
 const getContact = async (req: Request, res: Response, next: NextFunction) => {
   let id: number = parseInt(req.params.id);
   return res.status(200).json({
-    data: contacts.filter((item) => item.id === id),
+    data: contacts.find((item) => item.id === id),
   });
 };
 
